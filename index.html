@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2146d0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml">
+<title>TMS E-Learning</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#f4f7fb;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+#loading{height:100%;display:grid;place-items:center}.box{text-align:center;padding:24px}
+.logo{font-size:54px}.small{font-size:13px;color:#718096;margin-top:8px}
+</style>
+</head>
+<body>
+<div id="loading"><div class="box"><div class="logo">🎓</div>
+<strong>กำลังเปิด TMS E-Learning...</strong>
+<div class="small">กรุณารอสักครู่</div></div></div>
+<script>
+/* ใส่ Web App URL ของ Apps Script ตรงนี้ */
+const APP_URL = 'https://script.google.com/macros/s/AKfycbyU1X6tyqx1iQsqQ1KawPgPAqL6vanhyFjI9CpExOcpvLWGucu3LeGNmawNI_rKA8Zw8g/exec?page=elearning';
+
+if ('serviceWorker' in navigator) {
+  addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+if (!APP_URL.includes('PUT_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+  location.replace(APP_URL);
+} else {
+  document.querySelector('.small').textContent =
+    'ใส่ URL ของ Web App ในไฟล์ index.html ก่อนใช้งาน';
+}
+</script>
+</body>
+</html>
